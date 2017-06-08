@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>第二週作業</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="https://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body>
+<p class="input"></p>
+<input type="button" name="submit_btn" id="submit_btn" value="啟動" onClick="submit_btn(1999,2016)">
+<script type="text/javascript" src="main.js"></script>
+</p>
+<hr>
+<svg width="300" height="200">
+	<rect x="0" y="0" width="300" height="200" fill="OldLace" />
+	<line x1="0" y1="45" x2="300" y2="45" style="stroke:#000000;stroke-width:1" />
+	<line x1="0" y1="75" x2="300" y2="75" style="stroke:#000000;stroke-width:1" />
+	<line x1="0" y1="105" x2="300" y2="105" style="stroke:#000000;stroke-width:1" />
+	<line x1="0" y1="135" x2="300" y2="135" style="stroke:#000000;stroke-width:1" />
+	<line x1="0" y1="165" x2="300" y2="165" style="stroke:#000000;stroke-width:1" />
+    <circle cx="150" cy="120" r="15" /></circle>
+    <rect x="160" y="45" width=5 height=78></rect>
+	<text x="137" y="195" font-size="40" fill="#000000">A</text>
+</svg>
+<hr>
+<script type="text/javascript">
+    var svg2=d3.select("body").append("svg").attr({
+        "id":"svn2",
+        "width":1000,
+        "height":250,
+    });
+    var y_start=0;  //y軸起點
+    var width_start=20; //起始寬度
+    var height_add=10;  //高度
+    var padding=2;  //間距
+    var width_add=20;   //遞增寬度
+    
+    for(var i=0;i<20;i++){
+        rands=randoms(20,300);
+        svg2.append("rect").attr({
+            "x":0,
+            "y":y_start+(padding+height_add)*i,
+            "width":rands,
+            "height":height_add,
+            "fill":"#ff0000",
+        });
+        svg2.append("text").attr({
+            "x":rands,
+            "y":y_start+(padding+height_add)*i+10,
+            "fill":"#000000",
+			"font-size":"12px",
+        }).text(rands);
+        rands=0;
+    }
+    d3.select("body").append("hr");
+	var svg3=d3.select("body").append("svg").attr({
+        "id":"svn3",
+        "width":1000,
+        "height":1000,
+    });
+    var y_start=10;  //y軸起點
+    var width_start=20; //起始寬度
+    var height_add=30;  //高度
+    var padding=12;  //間距
+    var width_add=20;   //遞增寬度
+    points="0,0 ";
+    
+    for(var i=0;i<20;i++){
+        rands=randoms(20,300);
+        svg3.append("circle").attr({
+            "cx":10+rands,
+            "cy":y_start+(padding+height_add)*i,
+            "r":5,
+            "fill":"#ff0000",
+        });
+        points+=(10+rands)+","+(y_start+(padding+height_add)*i)+" ";
+        svg3.append("text").attr({
+            "x":rands+40,
+            "y":y_start+(padding+height_add)*i+5,
+            "fill":"#000000",
+            "text-anchor":"end"
+        }).text(rands);
+        rands=0;
+    }
+    points+="0,"+(y_start+(padding+height_add)*i);
+    
+    svg3.append("polyline").attr({
+        points:points,
+        stroke:"#000000",
+        "fill":"#ffffff",
+    });
+	
+    function randoms(n,m){
+        var reslut= Math.floor(Math.random()*(m-n+1)+n);
+        return reslut;
+    }
+
+
+</script>
+
+</body>
+</html>

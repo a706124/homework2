@@ -1,0 +1,12 @@
+.input{
+	width:140px;
+	height:28px;
+	border:2px solid #FF0000;
+	font-size:22px;
+}
+
+#submit_btn{
+	font-size:22px;
+	height:32px;
+	width:100px;
+}
